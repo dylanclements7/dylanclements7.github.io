@@ -63,7 +63,6 @@
             padding: 4rem 2rem;
         }
 
-        /* Home Page Styles */
         .home-section {
             display: flex;
             gap: 4rem;
@@ -144,6 +143,64 @@
             color: #b0b0b0;
             font-size: 1.05rem;
             margin-bottom: 1rem;
+        }
+
+        .blog-section {
+            margin-top: 4rem;
+        }
+
+        .blog-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #60a5fa;
+        }
+
+        .blog-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background-color: #111;
+            border: 1px solid #222;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: #60a5fa;
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-date {
+            color: #60a5fa;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #e0e0e0;
+        }
+
+        .blog-content p {
+            color: #b0b0b0;
+            line-height: 1.7;
         }
 
         .projects-header {
@@ -295,8 +352,53 @@
                     I am a Student Researcher in Clark University’s Human-Computer Interaction Lab, working on Generative AI applications in accessibility, content creation, and social media.
                 </p>
             </div>
-        </div>
 
+             <div class="blog-section">
+                <h2>Recent Updates</h2>
+                <div class="blog-posts">    
+                    <div class="blog-card">
+                        <iframe class="blog-image" src="https://www.youtube.com/embed/HhSps5CmBKg?si=d8MoVW1ngmNq43Xm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <div class="blog-content">
+                            <div class="blog-date">December 11, 2025</div>
+                            <h3>Built and Presented a IoT Plant Care System</h3>
+                            <p>
+                                For my final project for my IoT course, I designed a networked plant auto-waterer with water-source 
+                                emptiness detection. My system monitors soil moisture, delivering water with a pump if the soil is dry,
+                                and also monitor the water level of whatever reservoir the user is using, if it gets too low to water it will use a
+                                LED to alert the user to fill it. Users can check the soil moisture and water level at any time on an app/website.
+                                This was an absolute blast to build and I learned a lot about motors, relays, and networking with microcontrollers!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="blog-card">
+                        <img src="images/hackathonPodiumCropped.JPEG" alt="HackathonFall25" class="blog-image">
+                        <div class="blog-content">
+                            <div class="blog-date">November 9, 2025</div>
+                            <h3>Won 3rd Place at Clark Hackathon</h3>
+                            <p>
+                                I recently had the opportunity to compete in the Fall Hackathon at Clark University!
+                                I had the pleasure of working with my dedicated and talented teammates Charles VandenBosch, Noah Burd, and Elliot Edwards to 
+                                make AutoBots, an online interface where users can create games and compete in one-on-one competitions by programming bots in 
+                                Python to play against each other! The theme of the Hackathon was “hack your hobby”, and we wanted to serve our hobby of programming with a fun, communal, and educational system like AutoBots. 
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="blog-card">
+                        <img src="images/hackHarvardCropped.JPG" alt="HackHarvard25" class="blog-image">
+                        <div class="blog-content">
+                            <div class="blog-date">October 5, 2025</div>
+                            <h3>Competed in HackHarvard</h3>
+                            <p>
+                                I collaborated with my exceptional teammates Christopher Siems, Torin Anderson, and Noah Burd to create Unity Notes, a decentralized peer-to-peer platform-agnostic 
+                                community notes Chrome Extension! With media consolidation and misinformation on the rise, we wanted to build a system which brings control over knowledge transfer back to communities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="projects" class="page">
             <div class="projects-header">
                 <h1>My Projects</h1>
@@ -377,8 +479,9 @@
                             LED to alert the user to fill it. Users can check the soil moisture and water level at any time on an app/website. 
                         </p>
                         <div class="project-links">
-                            <a href="linktoinstructable" class="project-link" target="_blank">Instructable</a>
-                            <a href="https://drive.google.com/file/d/1qpNq33GVPW9xa0kSuwUkQWwdXhFdZo0R/view?resourcekey" class="project-link" target="_blank">Demo</a>
+                            <a href="https://www.instructables.com/Networked-Plant-Auto-Waterer-With-Water-Source-Emp/" class="project-link" target="_blank">Instructable</a>
+                            <a href="https://www.youtube.com/watch?v=HhSps5CmBKg" class="project-link" target="_blank">Demo</a>
+                            <a href="documents/IoT Final Slides.pdf" class="project-link" target="_blank">Slides</a>
                         </div>
                     </div>
                 </div>
