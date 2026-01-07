@@ -333,7 +333,6 @@
     </nav>
 
     <div class="container">
-        <!-- Home Page -->
         <div id="home" class="page active">
             <div class="home-section">
                 <img src="images/headshot.JPG" alt="Dylan Clements" class="profile-photo">
@@ -400,6 +399,8 @@
                                 emptiness detection. My system monitors soil moisture, delivering water with a pump if the soil is dry,
                                 and also monitor the water level of whatever reservoir the user is using, if it gets too low to water it will use a
                                 LED to alert the user to fill it. Users can check the soil moisture and water level at any time on an app/website.
+                                I got the opportunity to present my project to my classmates and several professors from the Computer Science department
+                                through a slideshow and live demo,and I also created an Instructable so others can build their own!
                                 This was an absolute blast to build and I learned a lot about motors, relays, and networking with microcontrollers!
                             </p>
                         </div>
@@ -411,10 +412,15 @@
                             <div class="blog-date">November 9, 2025</div>
                             <h3>Won 3rd Place at Clark Hackathon</h3>
                             <p>
-                                I recently had the opportunity to compete in the Fall Hackathon at Clark University!
+                                I just competed in the Fall Hackathon at Clark University!
                                 I had the pleasure of working with my dedicated and talented teammates Charles VandenBosch, Noah Burd, and Elliot Edwards to 
                                 make AutoBots, an online interface where users can create games and compete in one-on-one competitions by programming bots in 
                                 Python to play against each other! The theme of the Hackathon was “hack your hobby”, and we wanted to serve our hobby of programming with a fun, communal, and educational system like AutoBots. 
+                                I was mainly focused on the backend throughout the weekend, working with Websockets to create real-time communication between users and the server, as well as integrating Pyodide to run 
+                                user-submitted Python code in the browser sandbox on their end. A fun challenge was that since we were allowing users to make their own games and write their own bots we knew we could not allow that code to be 
+                                ran on our server, nor on our user's devices. To solve this, users run their own bots on their machines, responding to the current game state when the server requests. The game logic is ran by the server in Piston, 
+                                an external secure code execution engine, and the board front end for games is run isolated in an iframe.
+                                We ended up winning 3rd place overall out of 16 teams, and it was an incredible experience!
                             </p>
                         </div>
                     </div>
@@ -427,6 +433,12 @@
                             <p>
                                 I collaborated with my exceptional teammates Christopher Siems, Torin Anderson, and Noah Burd to create Unity Notes, a decentralized peer-to-peer platform-agnostic 
                                 community notes Chrome Extension! With media consolidation and misinformation on the rise, we wanted to build a system which brings control over knowledge transfer back to communities.
+                                Users can leave notes or get context by highlighting text on any webpage. Notes are not stored in the central server. Instead, the notes are stored locally on the users device, with the 
+                                original statements and protocol to contact the notes authors stored in a vector database. When a user requests context for a statement, the vector database is used to identify users who 
+                                have commented on relevant statements. The notes can then be retrieved directly with a peer to peer connection, and are then consolidate using an aggregation agent, and then displayed to the user.
+                                I was primarily responsible for the vector database using Qdrant and the integration of the Gemini API for embedding generation and note summarization.
+                                I had fun wokring on an additional feature that identifies multiple topics in a highlighted text and retrieves notes for each topic separately, allowing for more nuanced context retrieval.
+                                Overall, it was an amazing experience and I am looking forward to next year!
                             </p>
                         </div>
                     </div>
@@ -448,6 +460,8 @@
                         <p>
                             Placed 3rd at the 2025 Fall Clark hackathon in a 4 person team with an online platform 
                             where users can create games and compete in one-on-one competitions by programming Python bots to play against each other using Python, JavaScript, FastAPI, React, Websockets, CodeMirror, Pyodide, Piston, and MongoDB.
+                            I was primarily responsible for the backend, working with Websockets to create real-time communication between users and the server, as well as integrating Pyodide to run user-submitted Python code in the browser sandbox on their end,
+                            as well as utilizing Piston to securely run user submitted game logic server-side.
                         </p>
                         <div class="project-links">
                             <a href="https://github.com/dylanclements7/AutoBots" class="project-link" target="_blank">GitHub</a>
@@ -457,12 +471,50 @@
                 </div>
 
                 <div class="project-card">
+                    <img src="images/clarkUltimate.png" alt="ClarkUltimate" class="project-image">
+                    <div class="project-content">
+                        <h3>ClarkUltimate</h3>
+                        <p>
+                            Me and my teammate Charles VandenBosch created ClarkUltimate.com, the official website for Clark University's Ultimate Frisbee team.
+                            The website features information about the team, great photos, the current practice schedule, tournament sign ups, rosters, scores, the history of the club, and the team sign up.
+                            With an admin login system, future team captains can update the site easily with new practices, tournaments, rosters, and scores.
+                            The site is built using HTML, CSS, JavaScript, and MongoDB for data storage.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://clarkultimate.com" class="project-link" target="_blank">Website</a>
+                            <a href="https://github.com/dylanclements7/Clark-Ultimate-Frisbee" class="project-link" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="images/autoPlant.png" alt="autoPlant" class="project-image">
+                    <div class="project-content">
+                        <h3>IoT Plant Care System</h3>
+                        <p>
+                            I designed a networked plant auto-waterer with water-source emptiness detection as my Internet of Things course final. 
+                            My system monitors soil moisture, delivering water with a pump if the soil is dry, 
+                            and also monitors the water level of whatever reservoir the user is using, if it gets too low to water it will use a 
+                            LED to alert the user to fill it. Users can check the soil moisture and water level at any time on a website. 
+                            I got the opportunity to present my project to my classmates and several professors from the Computer Science department
+                            through a slideshow and live demo, and I also created an Instructable so others can build their own!
+                        </p>
+                        <div class="project-links">
+                            <a href="https://www.instructables.com/Networked-Plant-Auto-Waterer-With-Water-Source-Emp/" class="project-link" target="_blank">Instructable</a>
+                            <a href="https://www.youtube.com/watch?v=HhSps5CmBKg" class="project-link" target="_blank">Demo</a>
+                            <a href="documents/IoT Final Slides.pdf" class="project-link" target="_blank">Slides</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
                     <img src="images/unityNotes.jpg" alt="unityNotes" class="project-image">
                     <div class="project-content">
                         <h3>Unity Notes</h3>
                         <p>
-                            Collaborated in a 4 person team during HackHarvard 2025 to create a decentralized, peer-to-peer, platform-agnostic community 
-                            notes system using JavaScript, SQLite, Qdrant, Python, and the Gemini api with a Chrome Extension frontend.
+                            A decentralized, peer-to-peer, platform-agnostic community notes system using JavaScript, SQLite, Qdrant, Python, and the Gemini api with a Chrome Extension frontend.
+                            Built in a 4 person team during the HackHarvard 2025.
+                            I was responsible for the vector database using Qdrant and the integration of the Gemini API for embedding generation, note summarization, and multi-topic context retrieval.
                         </p>
                         <div class="project-links">
                             <a href="https://github.com/dylanclements7/unity_notes" class="project-link" target="_blank">GitHub</a>
@@ -477,8 +529,9 @@
                     <div class="project-content">
                         <h3>CommUnity</h3>
                         <p>
-                            Worked in a 4 person team during the 2024 Fall Clark hackathon to create a platform for students 
+                            A platform designed in a 4 person team during the 2024 Fall Clark hackathon for students 
                             to get experience relevant to their studies via local volunteer work using JavaScript, SQLite, Python, and the OpenAI api.
+                            I was largely responsible for the openai api powered search and tagging mechanism to match students with relevant volunteer opportunities.
                         </p>
                         <div class="project-links">
                             <a href="https://github.com/dylanclements7/CommUnity" class="project-link" target="_blank">GitHub</a>
@@ -493,28 +546,12 @@
                     <div class="project-content">
                         <h3>InnerCircle</h3>
                         <p>
-                            Competed in the 2025 Spring Clark hackathon in a 4 person team to create a Chrome Extension 
-                            to passively communicate emotion in groups with only emojis using JavaScript, SQLite, and Python.
+                            A Chrome Extension to passively communicate emotion in groups with only emojis using JavaScript, SQLite, and Python built in a 4 person team during the 2025 Spring Clark hackathon.
+                            The hackathon theme was "communication beyond words", and we wanted to create a platform for people to easily express their emotions in group settings no matter the time or place.
+                            I was primarily reesponsible for the backend, using Python, Flask, and SQLite to create a secure login and group joining system as well as storing and retrieving user emoji and group membership.
                         </p>
                         <div class="project-links">
                             <a href="https://github.com/dylanclements7/InnerCircle" class="project-link" target="_blank">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <img src="images/autoPlant.png" alt="autoPlant" class="project-image">
-                    <div class="project-content">
-                        <h3>AutoPlant</h3>
-                        <p>
-                            I designed a networked plant auto-waterer with water-source emptiness detection. My system monitors soil moisture, delivering water with a pump if the soil is dry, 
-                            and also monitor the water level of whatever reservoir the user is using, if it gets too low to water it will use a 
-                            LED to alert the user to fill it. Users can check the soil moisture and water level at any time on an app/website. 
-                        </p>
-                        <div class="project-links">
-                            <a href="https://www.instructables.com/Networked-Plant-Auto-Waterer-With-Water-Source-Emp/" class="project-link" target="_blank">Instructable</a>
-                            <a href="https://www.youtube.com/watch?v=HhSps5CmBKg" class="project-link" target="_blank">Demo</a>
-                            <a href="documents/IoT Final Slides.pdf" class="project-link" target="_blank">Slides</a>
                         </div>
                     </div>
                 </div>
@@ -524,25 +561,13 @@
                     <div class="project-content">
                         <h3>LeafyLessons</h3>
                         <p>
-                            
+                            This project enables Worcester residents to see their location on both the heat and tree coverage maps, allowing them to visualize the tree coverage situation in their neighborhood and the negative effects it is 
+                            having on their quality of life and the environment as a whole. Our program also provides information to users on how to utilize Worcester City resources to plant trees in public spaces and get in touch with their representatives to support policies to protect and grow tree coverage in Worcester.
+                            Built using Python, ipapi, and tkinter in a 2 person team during the 2024 Spring Clark hackathon.
                         </p>
                         <div class="project-links">
                             <a href="https://github.com/dylanclements7/LeafyLessons" class="project-link" target="_blank">GitHub</a>
                             <a href="https://devpost.com/software/leafy-lessons" class="project-link" target="_blank">Devpost</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <img src="images/clarkUltimate.png" alt="ClarkUltimate" class="project-image">
-                    <div class="project-content">
-                        <h3>ClarkUltimate</h3>
-                        <p>
-                            
-                        </p>
-                        <div class="project-links">
-                            <a href="https://clarkultimate.com" class="project-link" target="_blank">Website</a>
-                            <a href="https://github.com/dylanclements7/Clark-Ultimate-Frisbee" class="project-link" target="_blank">GitHub</a>
                         </div>
                     </div>
                 </div>
