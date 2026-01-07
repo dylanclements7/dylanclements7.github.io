@@ -236,7 +236,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
 
@@ -255,7 +255,7 @@
 
         .project-image {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
         }
@@ -321,6 +321,51 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        footer {
+            background-color: #111;
+            border-top: 1px solid #222;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .footer-name {
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            color: #b0b0b0;
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover {
+            color: #60a5fa;
+        }
     </style>
 </head>
 <body>
@@ -364,7 +409,7 @@
                                 <span class="social-label">Email</span>
                             </div>
                         </a>
-                        <a href="documents/dylanClementsResume.pdf" target="_blank" class="social-link resume-link" title="Resume">
+                        <a href="documents/dylanClementsResume.pdf" target="_blank" class="social-link" title="Resume">
                             <div class="social-icon-wrapper">
                                 <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
@@ -382,7 +427,13 @@
                     Welcome to my personal website! I'm Dylan Clements, a Computer Science major at Clark University with a minor in Political Science, interested in creative problem-solving and human-centered technology.
                 </p>
                 <p>
-                    I am a Student Researcher in Clark University’s Human-Computer Interaction Lab, working on Generative AI applications in accessibility, content creation, and social media.
+                    I am a Student Researcher in Clark University's Human-Computer Interaction Lab, working on Generative AI applications in accessibility, content creation, and social media.
+                </p>
+                <p>
+                    Outside of academics, I enjoy Golf, Skiing, Ultimate Frisbee, Disc Golf, International Politics, History, Philosophy, Film, Personal Coding Projects, and Hackathons! I'm the president of the ACM Chapter at Clark, a member of the Clark Community Computing Club, and a player on Clark Ultimate Frisbee.
+                </p>
+                <p>
+                    Feel free to explore my projects and recent updates below, and don't hesitate to reach out via the social links above!
                 </p>
             </div>
 
@@ -415,7 +466,7 @@
                                 I just competed in the Fall Hackathon at Clark University!
                                 I had the pleasure of working with my dedicated and talented teammates Charles VandenBosch, Noah Burd, and Elliot Edwards to 
                                 make AutoBots, an online interface where users can create games and compete in one-on-one competitions by programming bots in 
-                                Python to play against each other! The theme of the Hackathon was “hack your hobby”, and we wanted to serve our hobby of programming with a fun, communal, and educational system like AutoBots. 
+                                Python to play against each other! The theme of the Hackathon was "hack your hobby", and we wanted to serve our hobby of programming with a fun, communal, and educational system like AutoBots. 
                                 I was mainly focused on the backend throughout the weekend, working with Websockets to create real-time communication between users and the server, as well as integrating Pyodide to run 
                                 user-submitted Python code in the browser sandbox on their end. A fun challenge was that since we were allowing users to make their own games and write their own bots we knew we could not allow that code to be 
                                 ran on our server, nor on our user's devices. To solve this, users run their own bots on their machines, responding to the current game state when the server requests. The game logic is ran by the server in Piston, 
@@ -458,10 +509,10 @@
                     <div class="project-content">
                         <h3>AutoBots</h3>
                         <p>
-                            Placed 3rd at the 2025 Fall Clark hackathon in a 4 person team with an online platform 
-                            where users can create games and compete in one-on-one competitions by programming Python bots to play against each other using Python, JavaScript, FastAPI, React, Websockets, CodeMirror, Pyodide, Piston, and MongoDB.
-                            I was primarily responsible for the backend, working with Websockets to create real-time communication between users and the server, as well as integrating Pyodide to run user-submitted Python code in the browser sandbox on their end,
-                            as well as utilizing Piston to securely run user submitted game logic server-side.
+                            Placed 3rd place out of 16 submissions at the 2025 Fall Clark hackathon!
+                            An online platform where users can create games and compete in one-on-one competitions by programming Python bots to play against each other using Python, JavaScript, FastAPI, React, Websockets, CodeMirror, Pyodide, Piston, and MongoDB.
+                            Our team was 4 people, I was primarily responsible for the backend, working with Websockets to create real-time communication between users and the server, integrating Pyodide to run user-submitted Python code in the browser sandbox on their end,
+                            and utilizing Piston to securely run user submitted game logic server-side.
                         </p>
                         <div class="project-links">
                             <a href="https://github.com/dylanclements7/AutoBots" class="project-link" target="_blank">GitHub</a>
@@ -541,7 +592,6 @@
                 </div>
 
                 <div class="project-card">
-                    <!--Get InnerCircle Photo-->
                     <img src="images/commUnity.jpg" alt="innerCircle" class="project-image">
                     <div class="project-content">
                         <h3>InnerCircle</h3>
@@ -575,6 +625,36 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-name">© 2026 Dylan Clements</div>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/dylanclements7" target="_blank" title="GitHub">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/dylan-clements7/" target="_blank" title="LinkedIn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="mailto:dylanclements77@gmail.com" title="Email">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </a>
+                <a href="documents/dylanClementsResume.pdf" target="_blank" title="Resume">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
 
     <script>
         const navLinks = document.querySelectorAll('.nav-link');
