@@ -209,15 +209,58 @@
             margin-bottom: 0.5rem;
         }
 
+        .blog-card.collapsed .blog-description {
+            max-height: 0;
+        }
+
+        .blog-description {
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
         .blog-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #e0e0e0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .blog-toggle {
+            font-size: 1.2rem;
+            color: #60a5fa;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            transform: rotate(0deg);
+        }
+
+        .blog-card:not(.collapsed) .arrow {
+            transform: rotate(180deg);
         }
 
         .blog-content p {
             color: #b0b0b0;
             line-height: 1.7;
+        }
+
+        .read-more-text {
+            font-size: 0.8rem;
+            font-weight: 400;
+            margin-right: 0.3rem;
+        }
+
+        .blog-card.collapsed .read-more-text::before {
+            content: "Read more";
+        }
+
+        .blog-card:not(.collapsed) .read-more-text::before {
+            content: "Read less";
         }
 
         .projects-header {
@@ -439,60 +482,122 @@
 
              <div class="blog-section">
                 <h2>Recent Updates</h2>
-                <div class="blog-posts">    
-                    <div class="blog-card">
+                <div class="blog-posts">
+
+                    <!-- <div class="blog-card">
+                        <img src="images/paper1.png" alt="Paper" class="blog-image">
+                        <div class="blog-content">
+                            <div class="blog-date">January 24, 2026</div>
+                            <h3>Paper Accepted to CHI 2026</h3>
+                            <p>
+                                Our paper, Creating Disability Story Videos with Generative AI: Motivation, Expression, and Sharing, has been conditionally accepted to CHI 2026! I’m beyond grateful to my advisor and first author, Shuo Niu, as well as my co-author, Hyungsin Kim, for their constant guidance and support throughout this project. This is also my first academic publication, which makes this milestone especially meaningful. <br> <br>
+                                This project explores how nine people with disabilities from a disability advocacy group used generative AI to create disability advocacy videos. Using the lens of digital storytelling, we examine the creation process, participants’ motivations, modes of expression, and feelings toward sharing. Through this analysis, we identify core affordances that generative AI currently provides, as well as areas for improvement to better support disability storytelling.<br><br>
+                                I conducted the initial literature review, co-designed the study, and applied for and received IRB approval from my institution, serving as the principal investigator. In this role, I scheduled and facilitated study sessions with participants, including informed consent, the creation task, and interviews. After the study concluded, I worked with my co-authors to analyze the qualitative data and contribute to the writing of our paper based on our findings.<br><br>
+                                This work has been an incredible experience, allowing me to develop my research skills while working in human-centered technologies and accessibility!
+                            </p>
+                        </div>
+                    </div> -->
+
+                    <div class="blog-card collapsed">
+                        <img src="images/paper1.png" alt="Paper" class="blog-image">
+                        <div class="blog-content">
+                            <div class="blog-date">January 24, 2026</div>
+                            <h3 onclick="this.parentElement.parentElement.classList.toggle('collapsed')">
+                                Paper Accepted to CHI 2026
+                                <span class="blog-toggle">
+                                    <span class="read-more-text"></span>
+                                    <span class="arrow">▲</span>
+                                </span>
+                            </h3>
+                            <div class="blog-description">
+                                <p>
+                                    Our paper, Creating Disability Story Videos with Generative AI: Motivation, Expression, and Sharing, has been conditionally accepted to CHI 2026! I’m beyond grateful to my advisor and first author, Shuo Niu, as well as my co-author, Hyungsin Kim, for their constant guidance and support throughout this project. This is also my first academic publication, which makes this milestone especially meaningful. <br> <br>
+                                    This project explores how nine people with disabilities from a disability advocacy group used generative AI to create disability advocacy videos. Using the lens of digital storytelling, we examine the creation process, participants’ motivations, modes of expression, and feelings toward sharing. Through this analysis, we identify core affordances that generative AI currently provides, as well as areas for improvement to better support disability storytelling.<br><br>
+                                    I conducted the initial literature review, co-designed the study, and applied for and received IRB approval from my institution, serving as the principal investigator. In this role, I scheduled and facilitated study sessions with participants, including informed consent, the creation task, and interviews. After the study concluded, I worked with my co-authors to analyze the qualitative data and contribute to the writing of our paper based on our findings.<br><br>
+                                    This work has been an incredible experience, allowing me to develop my research skills while working in human-centered technologies and accessibility!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-card collapsed">
                         <iframe class="blog-image" src="https://www.youtube.com/embed/HhSps5CmBKg?si=d8MoVW1ngmNq43Xm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         <div class="blog-content">
                             <div class="blog-date">December 11, 2025</div>
-                            <h3>Built and Presented an IoT Plant Care System</h3>
-                            <p>
-                                For my final project for my IoT course, I designed a networked plant auto-waterer with water-source 
-                                emptiness detection. My system monitors soil moisture, delivering water with a pump if the soil is dry,
-                                it also monitors the water level of whatever reservoir the user is using, if it gets too low to water it will use a
-                                LED to alert the user to fill it. Users can check the live soil moisture and water level at any time on a website.
-                                I got the opportunity to present my project to my classmates and several professors from the Computer Science department
-                                through a slideshow and live demo,and I also created an Instructable so others can build their own!
-                                This was an absolute blast to build and I learned a lot about motors, relays, and networking with microcontrollers!
-                            </p>
+                            <h3 onclick="this.parentElement.parentElement.classList.toggle('collapsed')">
+                                Built and Presented an IoT Plant Care System
+                                <span class="blog-toggle">
+                                    <span class="read-more-text"></span>
+                                    <span class="arrow">▲</span>
+                                </span>
+                            </h3>
+                            <div class="blog-description">
+                                <p>
+                                    For my final project for my IoT course, I designed a networked plant auto-waterer with water-source 
+                                    emptiness detection. My system monitors soil moisture, delivering water with a pump if the soil is dry,
+                                    it also monitors the water level of whatever reservoir the user is using, if it gets too low to water it will use a
+                                    LED to alert the user to fill it. Users can check the live soil moisture and water level at any time on a website.
+                                    I got the opportunity to present my project to my classmates and several professors from the Computer Science department
+                                    through a slideshow and live demo,and I also created an Instructable so others can build their own!
+                                    This was an absolute blast to build and I learned a lot about motors, relays, and networking with microcontrollers!
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="blog-card">
+                    <div class="blog-card collapsed">
                         <img src="images/hackathonPodiumCropped.JPEG" alt="HackathonFall25" class="blog-image">
                         <div class="blog-content">
                             <div class="blog-date">November 9, 2025</div>
-                            <h3>Won 3rd Place at Clark Hackathon</h3>
-                            <p>
-                                I just competed in the Fall Hackathon at Clark University!
-                                I had the pleasure of working with my dedicated and talented teammates Charles VandenBosch, Noah Burd, and Elliot Edwards to 
-                                make AutoBots, an online interface where users can create games and compete in one-on-one competitions by programming bots in 
-                                Python to play against each other! The theme of the Hackathon was "hack your hobby", and we wanted to serve our hobby of programming with a fun, communal, and educational system like AutoBots. 
-                                I was mainly focused on the backend throughout the weekend, working with Websockets to create real-time communication between users and the server, as well as integrating Pyodide to run 
-                                user-submitted Python code in the browser sandbox on their end. A fun challenge was that since we were allowing users to make their own games and write their own bots we knew we could not allow that code to be 
-                                ran on our server, nor on our user's devices. To solve this, users run their own bots on their machines, responding to the current game state when the server requests. The game logic is ran by the server in Piston, 
-                                an external secure code execution engine, and the board front end for games is run isolated in an iframe.
-                                We ended up winning 3rd place overall out of 16 teams, and it was an incredible experience!
-                            </p>
+                            <h3 onclick="this.parentElement.parentElement.classList.toggle('collapsed')">
+                                Won 3rd Place at Clark Hackathon
+                                <span class="blog-toggle">
+                                    <span class="read-more-text"></span>
+                                    <span class="arrow">▲</span>
+                                </span>
+                            </h3>
+                            <div class="blog-description">
+                                <p>
+                                    I just competed in the Fall Hackathon at Clark University!
+                                    I had the pleasure of working with my dedicated and talented teammates Charles VandenBosch, Noah Burd, and Elliot Edwards to 
+                                    make AutoBots, an online interface where users can create games and compete in one-on-one competitions by programming bots in 
+                                    Python to play against each other! The theme of the Hackathon was "hack your hobby", and we wanted to serve our hobby of programming with a fun, communal, and educational system like AutoBots. 
+                                    I was mainly focused on the backend throughout the weekend, working with Websockets to create real-time communication between users and the server, as well as integrating Pyodide to run 
+                                    user-submitted Python code in the browser sandbox on their end. A fun challenge was that since we were allowing users to make their own games and write their own bots we knew we could not allow that code to be 
+                                    ran on our server, nor on our user's devices. To solve this, users run their own bots on their machines, responding to the current game state when the server requests. The game logic is ran by the server in Piston, 
+                                    an external secure code execution engine, and the board front end for games is run isolated in an iframe.
+                                    We ended up winning 3rd place overall out of 16 teams, and it was an incredible experience!
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="blog-card">
+                    <div class="blog-card collapsed">
                         <img src="images/hackHarvardCropped.JPG" alt="HackHarvard25" class="blog-image">
                         <div class="blog-content">
                             <div class="blog-date">October 5, 2025</div>
-                            <h3>Competed in HackHarvard</h3>
-                            <p>
-                                I collaborated with my exceptional teammates Christopher Siems, Torin Anderson, and Noah Burd to create Unity Notes, a decentralized peer-to-peer platform-agnostic 
-                                community notes Chrome Extension! With media consolidation and misinformation on the rise, we wanted to build a system which brings control over knowledge transfer back to communities.
-                                Users can leave notes or get context by highlighting text on any webpage. Notes are not stored in the central server. Instead, the notes are stored locally on the users device, with the 
-                                original statements and protocol to contact the notes authors stored in a vector database. When a user requests context for a statement, the vector database is used to identify users who 
-                                have commented on relevant statements. The notes can then be retrieved directly with a peer to peer connection, and are then consolidated using an aggregation agent, and then displayed to the user.
-                                I was primarily responsible for the vector database using Qdrant and the integration of the Gemini API for embedding generation and note summarization.
-                                I had fun wokring on an additional feature that identifies multiple topics in a highlighted text and retrieves notes for each topic separately, allowing for more nuanced context retrieval.
-                                Overall, it was an amazing experience and I am looking forward to next year!
-                            </p>
+                            <h3 onclick="this.parentElement.parentElement.classList.toggle('collapsed')">
+                                Competed in HackHarvard
+                                <span class="blog-toggle">
+                                    <span class="read-more-text"></span>
+                                    <span class="arrow">▲</span>
+                                </span>
+                            </h3>
+                            <div class="blog-description">
+                                <p>
+                                    I collaborated with my exceptional teammates Christopher Siems, Torin Anderson, and Noah Burd to create Unity Notes, a decentralized peer-to-peer platform-agnostic 
+                                    community notes Chrome Extension! With media consolidation and misinformation on the rise, we wanted to build a system which brings control over knowledge transfer back to communities.
+                                    Users can leave notes or get context by highlighting text on any webpage. Notes are not stored in the central server. Instead, the notes are stored locally on the users device, with the 
+                                    original statements and protocol to contact the notes authors stored in a vector database. When a user requests context for a statement, the vector database is used to identify users who 
+                                    have commented on relevant statements. The notes can then be retrieved directly with a peer to peer connection, and are then consolidated using an aggregation agent, and then displayed to the user.
+                                    I was primarily responsible for the vector database using Qdrant and the integration of the Gemini API for embedding generation and note summarization.
+                                    I had fun wokring on an additional feature that identifies multiple topics in a highlighted text and retrieves notes for each topic separately, allowing for more nuanced context retrieval.
+                                    Overall, it was an amazing experience and I am looking forward to next year!
+                                </p>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
