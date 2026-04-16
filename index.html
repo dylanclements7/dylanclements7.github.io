@@ -57,6 +57,10 @@
             color: #60a5fa;
         }
 
+        a {
+           color: #60a5fa; 
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -209,17 +213,10 @@
             margin-bottom: 0.5rem;
         }
 
-        .blog-card.collapsed .blog-description {
-            max-height: 0;
-        }
-
-        .blog-description {
-            max-height: 15  00px;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
         .blog-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #e0e0e0;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -229,38 +226,26 @@
         .blog-toggle {
             font-size: 1.2rem;
             color: #60a5fa;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
+            transition: transform 0.3s;
         }
 
-        .arrow {
-            display: inline-block;
-            transition: transform 0.3s ease;
-            transform: rotate(0deg);
-        }
-
-        .blog-card:not(.collapsed) .arrow {
+        .blog-card.collapsed .blog-toggle {
             transform: rotate(180deg);
+        }
+
+        .blog-description {
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .blog-card.collapsed .blog-description {
+            max-height: 0;
         }
 
         .blog-content p {
             color: #b0b0b0;
             line-height: 1.7;
-        }
-
-        .read-more-text {
-            font-size: 0.8rem;
-            font-weight: 400;
-            margin-right: 0.3rem;
-        }
-
-        .blog-card.collapsed .read-more-text::before {
-            content: "Read more";
-        }
-
-        .blog-card:not(.collapsed) .read-more-text::before {
-            content: "Read less";
         }
 
         .projects-header {
@@ -345,26 +330,6 @@
             display: block;
         }
 
-        @media (max-width: 768px) {
-            .home-section {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .home-content h1 {
-                font-size: 2rem;
-            }
-
-            .profile-photo, .profile-placeholder {
-                width: 200px;
-                height: 200px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
         footer {
             background-color: #111;
             border-top: 1px solid #222;
@@ -409,6 +374,32 @@
         .footer-social a:hover {
             color: #60a5fa;
         }
+
+        @media (max-width: 768px) {
+            .home-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .home-content h1 {
+                font-size: 2rem;
+            }
+
+            .profile-photo, .profile-placeholder {
+                width: 200px;
+                height: 200px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -417,6 +408,7 @@
             <li><a href="#home" class="nav-link name-link" data-page="home">Dylan Clements</a></li>
             <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
             <li><a href="#projects" class="nav-link" data-page="projects">Projects</a></li>
+            <li><a href="#publications" class="nav-link" data-page="publications">Publications</a></li>
         </ul>
     </nav>
 
@@ -460,6 +452,14 @@
                                 <span class="social-label">Resume</span>
                             </div>
                         </a>
+                        <a href="https://scholar.google.com/citations?user=hwJmmgEAAAAJ&hl=en&oi=sra" target="_blank" class="social-link" title="Google Scholar">
+                            <div class="social-icon-wrapper">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 9a8 8 0 017.162 4.44L24 9.5z"/>
+                                </svg>
+                                <span class="social-label">Scholar</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -484,19 +484,29 @@
                 <h2>Recent Updates</h2>
                 <div class="blog-posts">
 
-                    <!-- <div class="blog-card">
-                        <img src="images/paper1.png" alt="Paper" class="blog-image">
+                    <div class="blog-card collapsed">
+                        <img src="images/CHI2026.png" alt="CHI2026" class="blog-image">
                         <div class="blog-content">
-                            <div class="blog-date">January 24, 2026</div>
-                            <h3>Paper Accepted to CHI 2026</h3>
-                            <p>
-                                Our paper, Creating Disability Story Videos with Generative AI: Motivation, Expression, and Sharing, has been conditionally accepted to CHI 2026! I’m beyond grateful to my advisor and first author, Shuo Niu, as well as my co-author, Hyungsin Kim, for their constant guidance and support throughout this project. This is also my first academic publication, which makes this milestone especially meaningful. <br> <br>
-                                This project explores how nine people with disabilities from a disability advocacy group used generative AI to create disability advocacy videos. Using the lens of digital storytelling, we examine the creation process, participants’ motivations, modes of expression, and feelings toward sharing. Through this analysis, we identify core affordances that generative AI currently provides, as well as areas for improvement to better support disability storytelling.<br><br>
-                                I conducted the initial literature review, co-designed the study, and applied for and received IRB approval from my institution, serving as the principal investigator. In this role, I scheduled and facilitated study sessions with participants, including informed consent, the creation task, and interviews. After the study concluded, I worked with my co-authors to analyze the qualitative data and contribute to the writing of our paper based on our findings.<br><br>
-                                This work has been an incredible experience, allowing me to develop my research skills while working in human-centered technologies and accessibility!
-                            </p>
+                            <div class="blog-date">April 16, 2026</div>
+                            <h3 onclick="this.parentElement.parentElement.classList.toggle('collapsed')">
+                                Presented at CHI 2026
+                                <span class="blog-toggle">
+                                    <span class="read-more-text"></span>
+                                    <span class="arrow">▲</span>
+                                </span>
+                            </h3>
+                            <p>I presented my first academic <a href="https://dl.acm.org/doi/full/10.1145/3772318.3791495" target="_blank">paper</a> and <a href="https://dl.acm.org/doi/full/10.1145/3772363.3798629" target="_blank">poster</a> at CHI 2026 in Barcelona!</p>
+                            <div class="blog-description">
+                                <p>
+                                    The ACM (Association of Computing Machinery) CHI conference on Human Factors in Computing Systems is the leading international conference on Human-Computer Interaction.
+                                    The conference was in Barcelona this year and I was able to travel and present our paper <a href="https://dl.acm.org/doi/full/10.1145/3772318.3791495" target="_blank">Creating Disability Story Videos with Generative AI: Motivation, Expression, and Sharing</a>
+                                    as well as our poster <a href="https://dl.acm.org/doi/full/10.1145/3772363.3798629" target="_blank">StoryComposerAI: Supporting Human-AI Story Co-Creation Through Decomposition and Linking</a>. <br><br>
+                                    These were my first academic publications and thus my first academic talks as well. This past week at CHI has been an invaluable learning experience and way to connect with potential colleagues, collaborators, and friends. I can't say any of this
+                                    without thanking my advisor Shuo Niu, who guided me throughout the entire process, I couldn't have done it without his support. Thank you!
+                                </p>
+                            </div>
                         </div>
-                    </div> -->
+                    </div>
 
                     <div class="blog-card collapsed">
                         <img src="images/paper1.png" alt="Paper" class="blog-image">
@@ -734,34 +744,78 @@
 
             </div>
         </div>
-    </div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-left">
-                <div class="footer-name">© 2026 Dylan Clements</div>
+        <div id="publications" class="page">
+                <div class="projects-header">
+                    <h1>My Publications</h1>
+                    <p style="color: #b0b0b0;">These are the academic works I have been a part of!</p>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="images/paper1.png" alt="CHI Paper" class="project-image">
+                        <div class="project-content">
+                            <h3>Creating Disability Story Videos with Generative AI: Motivation, Expression, and Sharing</h3>
+                            <p>
+                                <strong>CHI 2026</strong> - This project explores how nine people with disabilities from a disability advocacy group used generative AI to create disability story videos. Using the lens of digital storytelling, we examine the creation process, participants' motivations, modes of expression, and feelings toward sharing.
+                            </p>
+                            <div class="project-links">
+                                <a href="https://dl.acm.org/doi/full/10.1145/3772318.3791495" class="project-link" target="_blank">Paper</a>
+                                <a href="documents/CHI2026_Paper_Presentation.pdf" class="project-link" target="_blank">Slides</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="images/poster1.png" alt="CHI Poster" class="project-image">
+                        <div class="project-content">
+                            <h3>StoryComposerAI: Supporting Human-AI Story Co-Creation</h3>
+                            <p>
+                                <strong>CHI 2026 Poster</strong> - This work explores supporting human-AI story co-creation through decomposition and linking, enabling more effective collaboration between writers and AI systems.
+                            </p>
+                            <div class="project-links">
+                                <a href="https://dl.acm.org/doi/full/10.1145/3772363.3798629" class="project-link" target="_blank">Extended Abstract</a>
+                                <a href="documents/StoryComposerAI.pdf" class="project-link" target="_blank">Poster</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <div class="footer-social">
-                <a href="https://github.com/dylanclements7" target="_blank" title="GitHub">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/dylan-clements7/" target="_blank" title="LinkedIn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                </a>
-                <a href="mailto:dylanclements77@gmail.com" title="Email">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
-                </a>
-                <a href="documents/dylanClementsResume.pdf" target="_blank" title="Resume">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
-                    </svg>
-                </a>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-name">© 2026 Dylan Clements</div>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/dylanclements7" target="_blank" title="GitHub">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/dylan-clements7/" target="_blank" title="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:dylanclements77@gmail.com" title="Email">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </a>
+                    <a href="documents/dylanClementsResume.pdf" target="_blank" title="Resume">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                        </svg>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=hwJmmgEAAAAJ&hl=en&oi=sra" target="_blank" title="Google Scholar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 9a8 8 0 017.162 4.44L24 9.5z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
