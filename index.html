@@ -47,6 +47,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
+            white-space: nowrap;
         }
 
         nav a:hover {
@@ -306,6 +307,7 @@
         .project-links {
             display: flex;
             gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .project-link {
@@ -398,6 +400,10 @@
                 flex-direction: column;
                 gap: 1.5rem;
                 text-align: center;
+            }
+
+            nav ul {
+                gap: 1rem;
             }
         }
     </style>
