@@ -11,20 +11,88 @@
             box-sizing: border-box;
         }
 
+        /* ── CSS variables for both themes ── */
+        :root {
+            --bg:          #0a0a0a;
+            --nav-bg:      #111;
+            --card-bg:     #111;
+            --border:      #222;
+            --text:        #e0e0e0;
+            --text-muted:  #b0b0b0;
+            --accent:      #60a5fa;
+            --accent2:     #a78bfa;
+            --link-hover:  #60a5fa;
+            --footer-copy: #666;
+            --toggle-bg:   #222;
+            --toggle-icon: #b0b0b0;
+        }
+
+        /* Light mode via OS preference */
+        @media (prefers-color-scheme: light) {
+            :root:not([data-theme="dark"]) {
+                --bg:          #f5f5f5;
+                --nav-bg:      #ffffff;
+                --card-bg:     #ffffff;
+                --border:      #e0e0e0;
+                --text:        #1a1a1a;
+                --text-muted:  #555555;
+                --accent:      #2563eb;
+                --accent2:     #7c3aed;
+                --link-hover:  #2563eb;
+                --footer-copy: #999;
+                --toggle-bg:   #e8e8e8;
+                --toggle-icon: #555;
+            }
+        }
+
+        /* Manual light override */
+        [data-theme="light"] {
+            --bg:          #f5f5f5;
+            --nav-bg:      #ffffff;
+            --card-bg:     #ffffff;
+            --border:      #e0e0e0;
+            --text:        #1a1a1a;
+            --text-muted:  #555555;
+            --accent:      #2563eb;
+            --accent2:     #7c3aed;
+            --link-hover:  #2563eb;
+            --footer-copy: #999;
+            --toggle-bg:   #e8e8e8;
+            --toggle-icon: #555;
+        }
+
+        /* Manual dark override */
+        [data-theme="dark"] {
+            --bg:          #0a0a0a;
+            --nav-bg:      #111;
+            --card-bg:     #111;
+            --border:      #222;
+            --text:        #e0e0e0;
+            --text-muted:  #b0b0b0;
+            --accent:      #60a5fa;
+            --accent2:     #a78bfa;
+            --link-hover:  #60a5fa;
+            --footer-copy: #666;
+            --toggle-bg:   #222;
+            --toggle-icon: #b0b0b0;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #0a0a0a;
-            color: #e0e0e0;
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         nav {
-            background-color: #111;
+            background-color: var(--nav-bg);
             padding: 1.5rem 2rem;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         nav ul {
@@ -43,7 +111,7 @@
         }
 
         nav a {
-            color: #e0e0e0;
+            color: var(--text);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
@@ -51,16 +119,46 @@
         }
 
         nav a:hover {
-            color: #60a5fa;
+            color: var(--accent);
         }
 
         nav a.active {
-            color: #60a5fa;
+            color: var(--accent);
         }
 
         a {
-           color: #60a5fa; 
+           color: var(--accent); 
         }
+
+        /* ── Theme toggle button ── */
+        .theme-toggle {
+            background: var(--toggle-bg);
+            border: 1px solid var(--border);
+            color: var(--toggle-icon);
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Show/hide sun vs moon icon based on current theme */
+        .icon-moon { display: block; }
+        .icon-sun  { display: none;  }
+
+        [data-theme="light"] .icon-moon,
+        .is-light .icon-moon { display: none;  }
+        [data-theme="light"] .icon-sun,
+        .is-light .icon-sun  { display: block; }
 
         .container {
             max-width: 1200px;
@@ -80,7 +178,7 @@
             height: 300px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #222;
+            border: 4px solid var(--border);
             flex-shrink: 0;
         }
 
@@ -94,14 +192,14 @@
             justify-content: center;
             font-size: 4rem;
             color: #fff;
-            border: 4px solid #222;
+            border: 4px solid var(--border);
             flex-shrink: 0;
         }
 
         .home-content h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -109,7 +207,7 @@
 
         .home-content p {
             font-size: 1.1rem;
-            color: #b0b0b0;
+            color: var(--text-muted);
             margin-bottom: 0.5rem;
         }
 
@@ -120,7 +218,7 @@
         }
 
         .social-link {
-            color: #b0b0b0;
+            color: var(--text-muted);
             transition: color 0.3s, transform 0.3s;
             text-decoration: none;
         }
@@ -135,34 +233,35 @@
         .social-label {
             font-size: 0.75rem;
             font-weight: 500;
-            color: #b0b0b0;
+            color: var(--text-muted);
             transition: color 0.3s;
         }
 
         .social-link:hover {
-            color: #60a5fa;
+            color: var(--accent);
             transform: translateY(-3px);
         }
 
         .social-link:hover .social-label {
-            color: #60a5fa;
+            color: var(--accent);
         }
 
         .about-section {
-            background-color: #111;
+            background-color: var(--card-bg);
             padding: 3rem;
             border-radius: 12px;
-            border: 1px solid #222;
+            border: 1px solid var(--border);
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         .about-section h2 {
             font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: #60a5fa;
+            color: var(--accent);
         }
 
         .about-section p {
-            color: #b0b0b0;
+            color: var(--text-muted);
             font-size: 1.05rem;
             margin-bottom: 1rem;
         }
@@ -174,7 +273,7 @@
         .blog-section h2 {
             font-size: 2rem;
             margin-bottom: 2rem;
-            color: #60a5fa;
+            color: var(--accent);
         }
 
         .blog-posts {
@@ -184,16 +283,16 @@
         }
 
         .blog-card {
-            background-color: #111;
-            border: 1px solid #222;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s;
+            transition: transform 0.3s, border-color 0.3s, background-color 0.3s;
         }
 
         .blog-card:hover {
             transform: translateY(-5px);
-            border-color: #60a5fa;
+            border-color: var(--accent);
         }
 
         .blog-image {
@@ -208,7 +307,7 @@
         }
 
         .blog-date {
-            color: #60a5fa;
+            color: var(--accent);
             font-size: 0.9rem;
             font-weight: 500;
             margin-bottom: 0.5rem;
@@ -217,7 +316,7 @@
         .blog-content h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #e0e0e0;
+            color: var(--text);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -226,26 +325,35 @@
 
         .blog-toggle {
             font-size: 1.2rem;
-            color: #60a5fa;
+            color: var(--accent);
             transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 1rem;
         }
 
-        .blog-card.collapsed .blog-toggle {
-            transform: rotate(180deg);
-        }
+        /* Arrow points up when expanded, down when collapsed */
+        .blog-card .blog-toggle { transform: rotate(0deg); }
+        .blog-card.collapsed .blog-toggle { transform: rotate(180deg); }
 
         .blog-description {
-            max-height: 1000px;
+            /* Use grid trick for smooth height animation without a fixed max-height cap */
+            display: grid;
+            grid-template-rows: 1fr;
+            transition: grid-template-rows 0.35s ease;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+        }
+
+        .blog-description-inner {
+            overflow: hidden;
+            padding-top: 0.5rem;
         }
 
         .blog-card.collapsed .blog-description {
-            max-height: 0;
+            grid-template-rows: 0fr;
         }
 
         .blog-content p {
-            color: #b0b0b0;
+            color: var(--text-muted);
             line-height: 1.7;
         }
 
@@ -257,7 +365,7 @@
         .projects-header h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -270,16 +378,16 @@
         }
 
         .project-card {
-            background-color: #111;
-            border: 1px solid #222;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s;
+            transition: transform 0.3s, border-color 0.3s, background-color 0.3s;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-            border-color: #60a5fa;
+            border-color: var(--accent);
         }
 
         .project-image {
@@ -296,11 +404,11 @@
         .project-content h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #e0e0e0;
+            color: var(--text);
         }
 
         .project-content p {
-            color: #b0b0b0;
+            color: var(--text-muted);
             margin-bottom: 1.5rem;
         }
 
@@ -333,10 +441,11 @@
         }
 
         footer {
-            background-color: #111;
-            border-top: 1px solid #222;
+            background-color: var(--nav-bg);
+            border-top: 1px solid var(--border);
             padding: 2rem;
             margin-top: 4rem;
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         .footer-content {
@@ -355,12 +464,12 @@
 
         .footer-name {
             font-weight: 600;
-            color: #e0e0e0;
+            color: var(--text);
         }
 
         .footer-copyright {
             font-size: 0.85rem;
-            color: #666;
+            color: var(--footer-copy);
         }
 
         .footer-social {
@@ -369,12 +478,12 @@
         }
 
         .footer-social a {
-            color: #b0b0b0;
+            color: var(--text-muted);
             transition: color 0.3s;
         }
 
         .footer-social a:hover {
-            color: #60a5fa;
+            color: var(--accent);
         }
 
         @media (max-width: 768px) {
@@ -415,6 +524,16 @@
             nav a {
                 font-size: 0.85rem;
             }
+
+            /* Blog cards: make title wrap nicely on small screens */
+            .blog-content h3 {
+                font-size: 1.2rem;
+                gap: 0.5rem;
+            }
+
+            .blog-content {
+                padding: 1.25rem;
+            }
         }
     </style>
 </head>
@@ -425,6 +544,26 @@
             <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
             <li><a href="#projects" class="nav-link" data-page="projects">Projects</a></li>
             <li><a href="#publications" class="nav-link" data-page="publications">Publications</a></li>
+            <li>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+                    <!-- Moon = shown in dark mode -->
+                    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                    </svg>
+                    <!-- Sun = shown in light mode -->
+                    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                </button>
+            </li>
         </ul>
     </nav>
 
@@ -506,23 +645,22 @@
                             <div class="blog-date">April 16, 2026</div>
                             <h3 onclick="this.parentElement.parentElement.classList.toggle('collapsed')">
                                 Presented at CHI 2026
-                                <span class="blog-toggle">
-                                    <span class="read-more-text"></span>
-                                    <span class="arrow">▲</span>
-                                </span>
+                                <span class="blog-toggle">▲</span>
                             </h3>
                             <p>I presented my first academic <a href="https://dl.acm.org/doi/full/10.1145/3772318.3791495" target="_blank">paper</a> and <a href="https://dl.acm.org/doi/full/10.1145/3772363.3798629" target="_blank">poster</a> at CHI 2026 in Barcelona!</p>
                             <div class="blog-description">
-                                <p>
-                                    The ACM (Association of Computing Machinery) CHI conference on Human Factors in Computing Systems is the leading international conference on Human-Computer Interaction.
+                                <div class="blog-description-inner">
+                                    <p>
+                                        The ACM (Association of Computing Machinery) CHI conference on Human Factors in Computing Systems is the leading international conference on Human-Computer Interaction.
 
-                                    In Barcelona, I presented our paper <a href="https://dl.acm.org/doi/full/10.1145/3772318.3791495" target="_blank">Creating Disability Story Videos with Generative AI: Motivation, Expression, and Sharing</a> as well as our poster
-                                    <a href="https://dl.acm.org/doi/full/10.1145/3772363.3798629" target="_blank">StoryComposerAI: Supporting Human-AI Story Co-Creation Through Decomposition and Linking</a>. <br><br>
-                                    
-                                    This has been an invaluable learning experience and a way to connect with inspiring researchers, collaborators, and new friends!
+                                        In Barcelona, I presented our paper <a href="https://dl.acm.org/doi/full/10.1145/3772318.3791495" target="_blank">Creating Disability Story Videos with Generative AI: Motivation, Expression, and Sharing</a> as well as our poster
+                                        <a href="https://dl.acm.org/doi/full/10.1145/3772363.3798629" target="_blank">StoryComposerAI: Supporting Human-AI Story Co-Creation Through Decomposition and Linking</a>. <br><br>
+                                        
+                                        This has been an invaluable learning experience and a way to connect with inspiring researchers, collaborators, and new friends!
 
-                                    Thank you to the best advisor, Shuo Niu, for his mentorship and support!
-                                </p>
+                                        Thank you to the best advisor, Shuo Niu, for his mentorship and support!
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -533,20 +671,19 @@
                             <div class="blog-date">January 24, 2026</div>
                             <h3 onclick="this.parentElement.parentElement.classList.toggle('collapsed')">
                                 Paper Accepted to CHI 2026
-                                <span class="blog-toggle">
-                                    <span class="read-more-text"></span>
-                                    <span class="arrow">▲</span>
-                                </span>
+                                <span class="blog-toggle">▲</span>
                             </h3>
                             <p>Our paper, Creating Disability Story Videos with Generative AI: Motivation, Expression, and Sharing, has been conditionally accepted to CHI 2026! </p>
                             <div class="blog-description">
-                                <p>
-                                    The ACM (Association of Computing Machinery) CHI conference on Human Factors in Computing Systems is the leading international conference on Human-Computer Interaction.
-                                    I’m beyond grateful to my advisor and first author, Shuo Niu, as well as my co-author, Hyungsin Kim, for their constant guidance and support throughout this project. This is also my first academic publication, which makes this milestone especially meaningful. <br> <br>
-                                    This project explores how nine people with disabilities from a disability advocacy group used generative AI to create disability story videos. Using the lens of digital storytelling, we examine the creation process, participants’ motivations, modes of expression, and feelings toward sharing. Through this analysis, we identify core affordances that generative AI currently provides, as well as areas for improvement to better support disability storytelling.<br><br>
-                                    I conducted the initial literature review, co-designed the study, and applied for and received IRB approval from my institution, serving as the principal investigator. In this role, I scheduled and facilitated study sessions with participants, including informed consent, the creation task, and interviews. After the study concluded, I worked with my co-authors to analyze the qualitative data and contribute to the writing of our paper based on our findings.<br><br>
-                                    This work has been an incredible experience, allowing me to develop my research skills while working in human-centered technologies and accessibility!
-                                </p>
+                                <div class="blog-description-inner">
+                                    <p>
+                                        The ACM (Association of Computing Machinery) CHI conference on Human Factors in Computing Systems is the leading international conference on Human-Computer Interaction.
+                                        I'm beyond grateful to my advisor and first author, Shuo Niu, as well as my co-author, Hyungsin Kim, for their constant guidance and support throughout this project. This is also my first academic publication, which makes this milestone especially meaningful. <br> <br>
+                                        This project explores how nine people with disabilities from a disability advocacy group used generative AI to create disability story videos. Using the lens of digital storytelling, we examine the creation process, participants' motivations, modes of expression, and feelings toward sharing. Through this analysis, we identify core affordances that generative AI currently provides, as well as areas for improvement to better support disability storytelling.<br><br>
+                                        I conducted the initial literature review, co-designed the study, and applied for and received IRB approval from my institution, serving as the principal investigator. In this role, I scheduled and facilitated study sessions with participants, including informed consent, the creation task, and interviews. After the study concluded, I worked with my co-authors to analyze the qualitative data and contribute to the writing of our paper based on our findings.<br><br>
+                                        This work has been an incredible experience, allowing me to develop my research skills while working in human-centered technologies and accessibility!
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -557,21 +694,20 @@
                             <div class="blog-date">December 11, 2025</div>
                             <h3 onclick="this.parentElement.parentElement.classList.toggle('collapsed')">
                                 Built and Presented an IoT Plant Care System
-                                <span class="blog-toggle">
-                                    <span class="read-more-text"></span>
-                                    <span class="arrow">▲</span>
-                                </span>
+                                <span class="blog-toggle">▲</span>
                             </h3>
                             <p>For my final project for my Internet of Things course, I designed a networked plant auto-waterer with water-source emptiness detection!</p>
                             <div class="blog-description">
-                                <p>
-                                    My system monitors soil moisture, delivering water with a pump if the soil is dry,
-                                    it also monitors the water level of whatever reservoir the user is using, if it gets too low to water it will use a
-                                    LED to alert the user to fill it. Users can check the live soil moisture and water level at any time on a website. <br> <br>
-                                    I got the opportunity to present my project to my classmates and several professors from the Computer Science department
-                                    through a slideshow and live demo, and I also created an Instructable so others can build their own!<br><br>
-                                    This was an absolute blast to build and I learned a lot about motors, relays, and networking with microcontrollers!
-                                </p>
+                                <div class="blog-description-inner">
+                                    <p>
+                                        My system monitors soil moisture, delivering water with a pump if the soil is dry,
+                                        it also monitors the water level of whatever reservoir the user is using, if it gets too low to water it will use a
+                                        LED to alert the user to fill it. Users can check the live soil moisture and water level at any time on a website. <br> <br>
+                                        I got the opportunity to present my project to my classmates and several professors from the Computer Science department
+                                        through a slideshow and live demo, and I also created an Instructable so others can build their own!<br><br>
+                                        This was an absolute blast to build and I learned a lot about motors, relays, and networking with microcontrollers!
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -582,25 +718,24 @@
                             <div class="blog-date">November 9, 2025</div>
                             <h3 onclick="this.parentElement.parentElement.classList.toggle('collapsed')">
                                 3rd Place at Clark Hackathon
-                                <span class="blog-toggle">
-                                    <span class="read-more-text"></span>
-                                    <span class="arrow">▲</span>
-                                </span>
+                                <span class="blog-toggle">▲</span>
                             </h3>
                             <p>I just podium-placed in the Fall Hackathon at Clark University!</p>
                             <div class="blog-description">
-                                <p>
-                                    I had the pleasure of working with my dedicated and talented teammates Charles VandenBosch, Noah Burd, and Elliot Edwards to 
-                                    make AutoBots, an online interface where users can create games and compete in one-on-one competitions by programming bots in 
-                                    Python to play against each other! <br><br>
-                                    The theme of the Hackathon was "hack your hobby", and we wanted to serve our hobby of programming with a fun, communal, and educational system like AutoBots. 
-                                    I was mainly focused on the backend throughout the weekend, working with Websockets to create real-time communication between users and the server, as well as integrating Pyodide to run 
-                                    user-submitted Python code in the browser sandbox on their end.<br><br>
-                                    A fun challenge was that since we were allowing users to make their own games and write their own bots we knew we could not allow that code to be 
-                                    ran on our server, nor on other user's devices. To solve this, users run their own bots on their machines, responding to the current game state when the server requests. The game logic is ran by the server in Piston, 
-                                    an external secure code execution engine, and the board front end for games is run isolated in an iframe.<br><br>
-                                    We ended up winning 3rd place overall out of 16 teams, and it was an incredible experience!
-                                </p>
+                                <div class="blog-description-inner">
+                                    <p>
+                                        I had the pleasure of working with my dedicated and talented teammates Charles VandenBosch, Noah Burd, and Elliot Edwards to 
+                                        make AutoBots, an online interface where users can create games and compete in one-on-one competitions by programming bots in 
+                                        Python to play against each other! <br><br>
+                                        The theme of the Hackathon was "hack your hobby", and we wanted to serve our hobby of programming with a fun, communal, and educational system like AutoBots. 
+                                        I was mainly focused on the backend throughout the weekend, working with Websockets to create real-time communication between users and the server, as well as integrating Pyodide to run 
+                                        user-submitted Python code in the browser sandbox on their end.<br><br>
+                                        A fun challenge was that since we were allowing users to make their own games and write their own bots we knew we could not allow that code to be 
+                                        ran on our server, nor on other user's devices. To solve this, users run their own bots on their machines, responding to the current game state when the server requests. The game logic is ran by the server in Piston, 
+                                        an external secure code execution engine, and the board front end for games is run isolated in an iframe.<br><br>
+                                        We ended up winning 3rd place overall out of 16 teams, and it was an incredible experience!
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -611,23 +746,22 @@
                             <div class="blog-date">October 5, 2025</div>
                             <h3 onclick="this.parentElement.parentElement.classList.toggle('collapsed')">
                                 Competed in HackHarvard
-                                <span class="blog-toggle">
-                                    <span class="read-more-text"></span>
-                                    <span class="arrow">▲</span>
-                                </span>
+                                <span class="blog-toggle">▲</span>
                             </h3>
                             <p>I competed in HackHarvard, creating Unity Notes, a decentralized peer-to-peer platform-agnostic community notes Chrome Extension!</p>
                             <div class="blog-description">
-                                <p>
-                                    I collaborated with my exceptional teammates Christopher Siems, Torin Anderson, and Noah Burd to make this exciting project!
-                                    With media consolidation and misinformation on the rise, we wanted to build a system which brings control over knowledge transfer back to communities.<br><br>
-                                    Users can leave notes or get context by highlighting text on any webpage. Notes are not stored in the central server. Instead, the notes are stored locally on the users device, with the 
-                                    original statements and protocol to contact the notes authors stored in a vector database. When a user requests context for a statement, the vector database is used to identify users who 
-                                    have commented on relevant statements. The notes can then be retrieved directly with a peer to peer connection, and are then consolidated using an aggregation agent, and then displayed to the user. <br><br>
-                                    I was primarily responsible for the vector database using Qdrant and the integration of the Gemini API for embedding generation and note summarization.
-                                    I had fun working on an additional feature that identifies multiple topics in a highlighted text and retrieves notes for each topic separately, allowing for more nuanced context retrieval.
-                                    Overall, it was an amazing experience and I am looking forward to next year!
-                                </p>
+                                <div class="blog-description-inner">
+                                    <p>
+                                        I collaborated with my exceptional teammates Christopher Siems, Torin Anderson, and Noah Burd to make this exciting project!
+                                        With media consolidation and misinformation on the rise, we wanted to build a system which brings control over knowledge transfer back to communities.<br><br>
+                                        Users can leave notes or get context by highlighting text on any webpage. Notes are not stored in the central server. Instead, the notes are stored locally on the users device, with the 
+                                        original statements and protocol to contact the notes authors stored in a vector database. When a user requests context for a statement, the vector database is used to identify users who 
+                                        have commented on relevant statements. The notes can then be retrieved directly with a peer to peer connection, and are then consolidated using an aggregation agent, and then displayed to the user. <br><br>
+                                        I was primarily responsible for the vector database using Qdrant and the integration of the Gemini API for embedding generation and note summarization.
+                                        I had fun working on an additional feature that identifies multiple topics in a highlighted text and retrieves notes for each topic separately, allowing for more nuanced context retrieval.
+                                        Overall, it was an amazing experience and I am looking forward to next year!
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -638,7 +772,7 @@
         <div id="projects" class="page">
             <div class="projects-header">
                 <h1>My Projects</h1>
-                <p style="color: #b0b0b0;">Here are some of the projects I am most proud of!</p>
+                <p style="color: var(--text-muted);">Here are some of the projects I am most proud of!</p>
             </div>
 
             <div class="projects-grid">
@@ -787,7 +921,7 @@
         <div id="publications" class="page">
                 <div class="projects-header">
                     <h1>My Publications</h1>
-                    <p style="color: #b0b0b0;">These are the academic works I have been a part of!</p>
+                    <p style="color: var(--text-muted);">These are the academic works I have been a part of!</p>
                 </div>
 
                 <div class="projects-grid">
@@ -858,10 +992,10 @@
                     </a>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
     <script>
+        // ── Page navigation ──
         const navLinks = document.querySelectorAll('.nav-link');
         const pages = document.querySelectorAll('.page');
         const nameLink = document.querySelector('.name-link');
@@ -870,22 +1004,57 @@
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                
                 navLinks.forEach(l => l.classList.remove('active'));
                 pages.forEach(p => p.classList.remove('active'));
-                
                 const pageId = link.getAttribute('data-page');
-                
                 if (link.classList.contains('name-link')) {
                     homeLink.classList.add('active');
                 } else {
                     link.classList.add('active');
                 }
-                
                 document.getElementById(pageId).classList.add('active');
-
                 window.scrollTo(0, 0);
             });
+        });
+
+        // ── Theme toggle ──
+        const toggleBtn = document.getElementById('themeToggle');
+        const root = document.documentElement;
+
+        // Determine initial theme:
+        // 1. Check localStorage for a saved preference
+        // 2. Fall back to OS preference
+        // 3. Default to dark
+        function getSystemPreference() {
+            return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+
+        function applyTheme(theme) {
+            root.setAttribute('data-theme', theme);
+            // Update toggle button appearance
+            if (theme === 'light') {
+                toggleBtn.classList.add('is-light');
+            } else {
+                toggleBtn.classList.remove('is-light');
+            }
+        }
+
+        // Load saved preference or use system default
+        const savedTheme = localStorage.getItem('theme');
+        applyTheme(savedTheme || getSystemPreference());
+
+        toggleBtn.addEventListener('click', () => {
+            const current = root.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+            localStorage.setItem('theme', next);
+        });
+
+        // Listen for OS theme changes (in case user hasn't manually set a preference)
+        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches ? 'light' : 'dark');
+            }
         });
     </script>
 </body>
