@@ -638,6 +638,26 @@
              <div class="blog-section">
                 <h2>Recent Updates</h2>
                 <div class="blog-posts">
+                    
+                    <div class="blog-card collapsed">
+                        <img src="images/tyler.jpeg" alt="Tyler" class="blog-image">
+                        <div class="blog-content">
+                            <div class="blog-date">May 26, 2026</div>
+                            <h3 onclick="this.parentElement.parentElement.classList.toggle('collapsed')">
+                                Started a New Position
+                                <span class="blog-toggle">▲</span>
+                            </h3>
+                            <p>Excited to share that last week I started a new position as a Software Development Intern at Tyler Technologies!</p>
+                            <div class="blog-description">
+                                <div class="blog-description-inner">
+                                    <p>
+                                        This summer, I'll be working with the Payroll Development team in Yarmouth, Maine! I'm looking forward to learning from the talented people around me, 
+                                        contributing to meaningful projects, and continuing to grow as a developer.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="blog-card collapsed">
                         <img src="images/CHI2026.png" alt="CHI2026" class="blog-image">
@@ -995,7 +1015,6 @@
         </footer>
 
     <script>
-        // ── Page navigation ──
         const navLinks = document.querySelectorAll('.nav-link');
         const pages = document.querySelectorAll('.page');
         const nameLink = document.querySelector('.name-link');
@@ -1017,21 +1036,15 @@
             });
         });
 
-        // ── Theme toggle ──
         const toggleBtn = document.getElementById('themeToggle');
         const root = document.documentElement;
 
-        // Determine initial theme:
-        // 1. Check localStorage for a saved preference
-        // 2. Fall back to OS preference
-        // 3. Default to dark
         function getSystemPreference() {
             return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
         }
 
         function applyTheme(theme) {
             root.setAttribute('data-theme', theme);
-            // Update toggle button appearance
             if (theme === 'light') {
                 toggleBtn.classList.add('is-light');
             } else {
@@ -1039,7 +1052,6 @@
             }
         }
 
-        // Load saved preference or use system default
         const savedTheme = localStorage.getItem('theme');
         applyTheme(savedTheme || getSystemPreference());
 
@@ -1050,7 +1062,6 @@
             localStorage.setItem('theme', next);
         });
 
-        // Listen for OS theme changes (in case user hasn't manually set a preference)
         window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
             if (!localStorage.getItem('theme')) {
                 applyTheme(e.matches ? 'light' : 'dark');
